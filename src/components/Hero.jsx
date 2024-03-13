@@ -6,6 +6,7 @@ import { heroIcons } from "../constants";
 import { ScrollParallax } from "react-just-parallax";
 import { useRef } from "react";
 import Notification from "./Notification";
+import Generating from "./Generating";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
@@ -18,9 +19,9 @@ const Hero = () => {
       id="hero"
     >
       <div className="container relative" ref={parallaxRef}>
-        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[4rem] lg:mb-[6rem] md:mb-20">
+        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] lg:mb-[6.25rem] md:mb-20">
           <h1 className="h1 mb-6">
-            Explore the Possibilities of AI Chatting with&nbsp;
+            Explore the Possibilities of &nbsp;AI&nbsp;Chatting with
             <span className="inline-block relative">
               Brainwave
               <img
@@ -36,7 +37,7 @@ const Hero = () => {
               productivity with Brainwave, the open AI chat app.
             </p>
             <Button href="/pricing" white>
-              Get Started
+              Get Started{" "}
             </Button>
           </h1>
         </div>
@@ -52,21 +53,26 @@ const Hero = () => {
                   height={490}
                   alt="AI"
                 />
+                <Generating className="absolute right-4 left-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:-translate-x-1/2 md:w-[31rem]" />
                 <ScrollParallax isAbsolutelyPositioned>
                   <ul className="hidden absolute -left-[5.5rem] bottom-[7.5rem] px-1 py-1 bg-n-9/40 backdrop-blur border border-n-1/10 rounded-2xl xl:flex">
-                    {heroIcons.map((icon, index) => {
+                    {heroIcons.map((icon, index) => (
                       <li className="p-5" key={index}>
                         <img src={icon} width={24} height={25} alt={icon} />
-                      </li>;
-                    })}
+                      </li>
+                    ))}
                   </ul>
                 </ScrollParallax>
 
                 <ScrollParallax isAbsolutelyPositioned>
-                  <Notification />
+                  <Notification
+                    className="hidden absolute -right-[5.5rem] bottom-[11rem] w-[18rem] xl:flex"
+                    title="Code generation"
+                  />
                 </ScrollParallax>
               </div>
             </div>
+            <Gradient />
           </div>
           <div className="absolute -top-[54%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[138%] lg:-top-[104%] ">
             <img
@@ -77,8 +83,10 @@ const Hero = () => {
               alt="heroBackground"
             />
           </div>
+          <BackgroundCircles />
         </div>
       </div>
+      <BottomLine />
     </Section>
   );
 };
